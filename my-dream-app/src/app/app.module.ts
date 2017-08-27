@@ -10,6 +10,7 @@ import { ServersComponent } from './servers/servers.component';
 import { SuccessMessageComponent } from './success-message/success-message.component';
 import { WarningMessageComponent } from './warning-message/warning-message.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { NameInputComponent } from './name-input/name-input.component';
 
 /* appmodule przechowuje wszystkie moduły aplikacji i zawiera info o wszystkich funkcjonalnościach. nie ma skanowania komponentów w systemie. trzeba wszystko ręcznie zadeklarować */
 @NgModule({
@@ -19,7 +20,8 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     ServersComponent,
     SuccessMessageComponent,
     WarningMessageComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    NameInputComponent
   ],
   imports: [
     BrowserModule,

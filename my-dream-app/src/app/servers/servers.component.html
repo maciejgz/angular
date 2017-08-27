@@ -1,13 +1,25 @@
 <label>Server name</label>
-<input type="text" name="form-control" (input)="onUpdateServerName($event)">
-<p>{{ serverName }}</p>
+<!-- <input type="text" name="form-control" (input)="onUpdateServerName($event)">
+<p>{{ serverName }}</p> -->
+
+<!-- two way databindin -->
+<input type="text" name="form-control"
+	[(ngModel)]="serverName"
+>
+<p>{{ serverName }}</p> 
 <button 
 	class="btn btn-primary" 
 	[disabled]="!allowNewServer"
 	(click)="onCreateServer()"
 >Add server</button>
-<p>{{ serverCreationStatus }}</p>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<!-- dyrektywa -->
+<p *ngIf="serverCreated">Server was createad {{ serverName }}</p>
+
 
 <p [innerText]="allowNewServer"></p>
+
+
+
 <app-server></app-server>
 <app-server></app-server>
