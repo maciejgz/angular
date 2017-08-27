@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NameInputComponent implements OnInit {
 	username = '';
+  buttonClicked = false;
+
+  logs = [];
 
   constructor() { }
   ngOnInit() {
@@ -16,6 +19,9 @@ export class NameInputComponent implements OnInit {
     this.username = '';
   }
 
- 
+ displaySettings() {
+     this.buttonClicked = true;
+     this.logs.push(new Date().getTime());
+ }
 
 }

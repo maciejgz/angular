@@ -2,3 +2,27 @@
 <p>{{ username }}</p>
 
 <button id="resetUsername" (click)="resetUsername()" class="btn btn-primary" [disabled]="username === ''">Reset username</button>
+
+
+<!-- zadanie dyrektywy -->
+<!--
+	1. add button Display settings
+	2. add paragraph z wyborem 
+	3. dodaj wyświetlanie p po wciśnięciu buttonu (dane przechowuj w tabeli)
+	4. loguj wszystkie kliknięcia buttonu 
+	5. od piątego logu zrób wszsytkie logi niebieskie przy uzyciu ngStyle
+-->
+<p></p>
+<button id="displaySettings" class="btn btn-primary" (click)="displaySettings()">
+Display settings</button>
+
+<p *ngIf="buttonClicked; else notClicked">Button clicked</p>
+
+<p *ngFor="let log of logs" [ngClass]="{five: logs.length >= 5}">
+	<b 
+	>{{ log }}</b>
+</p>
+
+
+
+
