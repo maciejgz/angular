@@ -1,2 +1,8 @@
-<p>{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }} </p>
+<!-- dyrektywa ngStyle a bracket jest tylko użyty do property binding. na podstawie metody getColor() ustawiamy styl elementu -->
+<p 
+	[ngStyle]="{backgroundColor: getColor()}"
+	[ngClass]="{online: serverStatus === 'online'}"
+>
+{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }} 
+</p>
 <hr />

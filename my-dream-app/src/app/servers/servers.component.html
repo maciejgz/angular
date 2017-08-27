@@ -13,13 +13,19 @@
 	(click)="onCreateServer()"
 >Add server</button>
 <!-- <p>{{ serverCreationStatus }}</p> -->
-<!-- dyrektywa -->
-<p *ngIf="serverCreated">Server was createad {{ serverName }}</p>
+<!-- dyrektywa if -->
+<p *ngIf="serverCreated; else noServer">Server was createad {{ serverName }}</p>
+<!-- else przy uzyciu lokalnego odniesienia d -->
+<ng-template #noServer> 
+	<p>No server was created!</p>
+</ng-template>
 
 
 <p [innerText]="allowNewServer"></p>
 
 
+<!-- listowanie listy. przypisanie parametry do server -->
+<app-server *ngFor="let server of servers">
+	
 
-<app-server></app-server>
-<app-server></app-server>
+</app-server>
