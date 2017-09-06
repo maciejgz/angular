@@ -9,26 +9,28 @@ export class CockpitComponent implements OnInit {
     newServerName = '';
   newServerContent = '';
   /** event emitter pozwla na tworznei własnych eventów 
-    Output pozwala na wyrzucenie obiektu do eventu
+    Output pozwala na wyrzucenie typu obiektu zdarzenia jako obiekt $event
   **/
- @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+ @Output() serverCreated = new EventEmitter<{serverName: string, 
+     serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, 
+      serverContent: string}>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-    onAddServer() {
-    this.serverCreated.emit({serverName: this.newServerName,
+    onAddServer(nameInput: HTMLInputElement) {
+    this.serverCreated.emit({serverName: nameInput.value,
      serverContent: this.newServerContent});
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(nameInput: HTMLInputElement) {
     /** 
     Przekazanie obiektów do emit eventu
     */
-   this.blueprintCreated.emit({serverName: this.newServerName,
+   this.blueprintCreated.emit({serverName: nameInput.value,
      serverContent: this.newServerContent});
   }
 

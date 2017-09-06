@@ -1,8 +1,9 @@
 <div class="container">
-  <!-- dodane własne eventy z przekazaniem parametru -->
+  <!-- dodane własne eventy z przekazaniem parametru.
+  Zdarzeniami tutaj są bpCreated a po = są reagujące funkcje -->
   <app-cockpit 
   (serverCreated)="onServerAdded($event)"
-  (blueprintCreated)="onBlueprintAdded($event)"
+  (bpCreated)="onBlueprintAdded($event)"
   ></app-cockpit>
   <hr>
   <div class="row">
