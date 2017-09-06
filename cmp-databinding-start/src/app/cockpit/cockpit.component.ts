@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -6,8 +6,10 @@ import { Component, OnInit, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-    newServerName = '';
   newServerContent = '';
+  // viewChild pozwala na dobrannie się do elementu z templatu w klasie - do konkretnego elemntu DOM 
+  @ViewChild('serverContentInput') serverContentInput: ElementRef;
+
   /** event emitter pozwla na tworznei własnych eventów 
     Output pozwala na wyrzucenie typu obiektu zdarzenia jako obiekt $event
   **/
@@ -22,16 +24,21 @@ export class CockpitComponent implements OnInit {
   }
 
     onAddServer(nameInput: HTMLInputElement) {
-    this.serverCreated.emit({serverName: nameInput.value,
-     serverContent: this.newServerContent});
+      console.log(this.serverContentInput);
+    this.serverCreated.emit({
+      serverName: nameInput.value,
+     serverContent: this.serverContentInput.nativeElement.value
+   });
   }
 
   onAddBlueprint(nameInput: HTMLInputElement) {
     /** 
     Przekazanie obiektów do emit eventu
     */
-   this.blueprintCreated.emit({serverName: nameInput.value,
-     serverContent: this.newServerContent});
+   this.blueprintCreated.emit({
+     serverName: nameInput.value,
+     serverContent: this.serverContentInput.nativeElement.value
+   });
   }
 
 }
