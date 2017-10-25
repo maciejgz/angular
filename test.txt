@@ -1,4 +1,13 @@
 test test
 
 
+<<<<<<< HEAD
 forced
+=======
+forced
+
+
+commit1
+commit2
+commit3
+>>>>>>> 849b201... commit3
