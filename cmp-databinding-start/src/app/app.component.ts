@@ -6,6 +6,7 @@ import { Component, EventEmitter } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // tworzenie obiektu ze zdefiniowaną zawartością - ten obiekt jest dostępny jedynie wewnątrz tego komponentu. do udostępniania obiektów na zewnątrz potrzebny jest dekorator @Input
  serverElements = [{type: 'server', name: 'Testserver', content: 'Just a test!'}];
 
 

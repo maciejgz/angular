@@ -15,6 +15,11 @@
         [srvElement] = "serverElement"
         [name]="serverElement.name"
         >
+           <p #contentParagraph>
+            <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+            <em *ngIf="serverElement.type === 'blueprint'" style="color: blue">{{ serverElement.content }}</em>
+          </p>
+
         </app-server-element>
     </div>
   </div>

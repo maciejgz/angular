@@ -22,21 +22,25 @@ ContentChild
   styleUrls: ['./server-element.component.css'],
 })
 export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-	//publiczny obiekt z aliasem srvElement
+	//publiczny obiekt z aliasem srvElement - input pozwala udostępniać obiekt na zewnątrz. obiekty nadrzędne moga z niego korzystać, edytować itp.
+  // z aliasem jest dostępny na zewnątrz. bez aliasu - wewnątrz
 	@Input('srvElement') element: {type: string, name: string, content: string};
 	@Input('name') name: string;
 
-  //odwołanie do elementu DOM poprzez localReference -  bardzow yogodne
+  //odwołanie do elementu DOM poprzez localReference -  bardzo wygodne
   @ViewChild('heading') header: ElementRef;
 
   //tak samo jak veiwChild tylko dla contentu
   @ViewChild('contentParagraph') paragraph: ElementRef;
 
+  // tak jak view child tylko do elementów zawartych w tagach ng-content czyli dodanych do parenta
+  @ContentChild('contentParagraph') contentParagraph: ElementRef;
+
 	constructor() {
 		console.log('constructor called');
 	 }
 
-	 /** jedyny hook z arguemntem, który zawiera informacje o komponencie **/
+	 /** jedyny hook z arguemntem, który zawiera informacje o komponencie zmienianym - przed i po zmianuie. przydatne do śledzenia zmian **/
 	 ngOnChanges(changes: SimpleChanges) {
 		console.log('ngOnCHanges called');
 		console.log(changes);
@@ -45,6 +49,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 	ngOnInit() {
 		console.log('ngOnInit called');
     console.log(this.header.nativeElement.textContent);
+    console.log(this.contentParagraph.nativeElement.textContent);
   	}
 
 /**
@@ -57,12 +62,10 @@ wywolywane zawsze kiedy angular szuka zmian - w bardzo wielu miejscach i bardzo 
 
   	ngAfterContentInit() {
   		console.log('ngAfterContentInit called');
-    console.log(this.paragraph.nativeElement.textContent);
   	}
 
   	ngAfterContentChecked() {
   		console.log('ngAfterContentChecked called');
-    console.log(this.paragraph.nativeElement.textContent);
   	}
 
   		ngAfterViewInit() {

@@ -11,7 +11,8 @@ export class CockpitComponent implements OnInit {
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
   /** event emitter pozwala na tworzenie własnych eventów 
-    Output pozwala na wyrzucenie typu obiektu zdarzenia jako obiekt $event
+    Output pozwala na wyrzucenie typu obiektu zdarzenia jako obiekt $event do elementu nadrzędnego.
+    w obiekcie nadrzędnym powinno być podłączenie tych eventów do jakiejś metody
   **/
  @Output() serverCreated = new EventEmitter<{serverName: string, 
      serverContent: string}>();
@@ -23,6 +24,9 @@ export class CockpitComponent implements OnInit {
   ngOnInit() {
   }
 
+    /*
+    tutaj jest emitowany obiekt przez obiekt emitera z adnotacja @Output
+    */
     onAddServer(nameInput: HTMLInputElement) {
       console.log(this.serverContentInput);
     this.serverCreated.emit({
