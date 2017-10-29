@@ -10,7 +10,7 @@ export class CockpitComponent implements OnInit {
   // viewChild pozwala na dobrannie się do elementu z templatu w klasie - do konkretnego elemntu DOM 
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
-  /** event emitter pozwla na tworznei własnych eventów 
+  /** event emitter pozwala na tworzenie własnych eventów 
     Output pozwala na wyrzucenie typu obiektu zdarzenia jako obiekt $event
   **/
  @Output() serverCreated = new EventEmitter<{serverName: string, 

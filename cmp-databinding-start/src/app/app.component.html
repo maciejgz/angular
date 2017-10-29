@@ -1,6 +1,6 @@
 <div class="container">
   <!-- dodane własne eventy z przekazaniem parametru.
-  Zdarzeniami tutaj są bpCreated a po = są reagujące funkcje -->
+  Zdarzeniami tutaj są bpCreated a po = są reagujące funkcje w klasie nadrzędnej. obiekt event jest tworzony w emiterze w elemencie podrzędnym app-cockpit -->
   <app-cockpit 
   (serverCreated)="onServerAdded($event)"
   (bpCreated)="onBlueprintAdded($event)"
