@@ -1,4 +1,4 @@
-import { Directive, ElementRef , OnInit, Renderer2,HostListener, HostBinding} from '@angular/core';
+import { Directive, ElementRef , OnInit, Renderer2,HostListener, HostBinding, Input} from '@angular/core';
 
 //dyrektywa z użyciem renderera - dzięki temu nie musimy odwoływać się bezpośrednio do atrybutu elementu przez NativeElement
 
@@ -7,15 +7,19 @@ import { Directive, ElementRef , OnInit, Renderer2,HostListener, HostBinding} fr
 })
 export class BetterHighlightDirective implements OnInit {
 
+	@Input() defaultColor: string = "transparent";
+	@Input() highlightColor: string = "blue";
+
 	constructor(private elRef: ElementRef, private renderer: Renderer2) {
 
 	}
 
 	//określa do którego elementu hostowanego template chcemy coś przypisać - ten element jest zdefiniowany w parametrze. wartość zmiennej będzie przypisywana na stałe do tego paramtru
 	//używamy camel case, bo DOM nie zna myślników
-	@HostBinding('style.backgroundColor') backgroundColor: string = 'transparent';
+	@HostBinding('style.backgroundColor') backgroundColor: string = this.defaultColor;
 
 	ngOnInit(){
+		this.backgroundColor = this.defaultColor;
 		//this.renderer.setStyle(this.elRef.nativeElement, 'backgroundColor', 'blue');
 	}
 
@@ -27,7 +31,7 @@ export class BetterHighlightDirective implements OnInit {
 		//this.renderer.setStyle(this.elRef.nativeElement, 'backgroundColor', 'blue');
 
 		//wersja 2 z HostBinding
-		this.backgroundColor = "blue";
+		this.backgroundColor = this.highlightColor;
 	}
 
 	@HostListener('mouseleave') mouseLeave(eventData: Event) {
@@ -35,7 +39,7 @@ export class BetterHighlightDirective implements OnInit {
 		this.renderer.setStyle(this.elRef.nativeElement, 'backgroundColor', 'transparent');
 
 		//wersja 2 z HostBinding
-		this.backgroundColor = "transparent";
+		this.backgroundColor = this.defaultColor;
 
 	}
 

@@ -27,6 +27,19 @@
           > {{ even }}
         </li>
       </div>
+
+      <!-- własna dyrektywa (odwrócony ngIf). dostęp do niej poprzez slector -->
+ <div *appUnless="!onlyOdd">
+        <li
+          class="list-group-item"
+          [ngClass] = "{odd: odd % 2 !== 0}"
+          [ngStyle] = "{backgroundColor: odd % 2 !==0 ? 'yellow' : 'transparent'}"
+          *ngFor="let odd of oddNumbers"
+          > {{ odd }}
+        </li>
+        </div>
+
+
       </ul>
       <!-- nazwa dyrektywy jest od razu jej nazwą - nie trzeba używać bracketów i innego typu odwoła -->
       <p appBasicHighlight>Basic directive style</p>
