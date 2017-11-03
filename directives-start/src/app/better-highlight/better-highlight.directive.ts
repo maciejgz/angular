@@ -14,7 +14,8 @@ export class BetterHighlightDirective implements OnInit {
 
 	}
 
-	//określa do którego elementu hostowanego template chcemy coś przypisać - ten element jest zdefiniowany w parametrze. wartość zmiennej będzie przypisywana na stałe do tego paramtru
+	//określa do którego elementu hostowanego template chcemy coś przypisać - ten element jest zdefiniowany w parametrze.
+	// wartość zmiennej będzie przypisywana na stałe do tego paramtru
 	//używamy camel case, bo DOM nie zna myślników
 	@HostBinding('style.backgroundColor') backgroundColor: string = this.defaultColor;
 

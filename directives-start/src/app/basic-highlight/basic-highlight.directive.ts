@@ -9,7 +9,9 @@ import { Directive, ElementRef , OnInit} from '@angular/core';
 })
 export class BasicHighlightDirective implements OnInit {
 
-	//!!!dodanie private przed parametrem konstruktowa pozwala od razu na utworzenie obiektu dostępnego w tej klasie
+	//!!!dodanie private przed parametrem konstruktora 
+	//pozwala od razu na utworzenie obiektu dostępnego 
+	//w tej klasie
 	constructor(private elementRef: ElementRef) {
 	}
 
