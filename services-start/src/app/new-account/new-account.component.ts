@@ -17,6 +17,10 @@ export class NewAccountComponent {
 // do wstrzykiwania potrzebujemy providera
 constructor(private loggingService: LoggingService,
   private accountService: AccountService) {
+  //wymiana danych pomiędzy komponentami z użyciem serwisów i event emitterów
+  this.accountService.statusUpdated.subscribe(
+    (status: string) => alert('new status ' + status)
+    );
 
 }
 

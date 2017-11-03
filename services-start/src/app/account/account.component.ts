@@ -19,5 +19,8 @@ export class AccountComponent {
 
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
+
+    //w serwisach można dodawać także eventEmittery
+    this.accountService.statusUpdated.emit(status);
    }
 }
