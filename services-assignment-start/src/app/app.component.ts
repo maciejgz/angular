@@ -1,21 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+/**
+  UserService dodany na poziomie app.component oznacza, że ta sama instancja będzie dostępna
+  dla wszystkich childs komponentu
+**/
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UserService]
 })
-export class AppComponent {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+export class AppComponent implements OnInit {
+
+
+  activeUsers: string[] = [];
+  inactiveUsers: string[] = [];
+
+  constructor(private userService: UserService) {
+      this.activeUsers = this.userService.activeUsers;
+      this.inactiveUsers = this.userService.inactiveUsers;
+  }
+
+  ngOnInit() {
+
+  }
 
   onSetToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
+    this.userService.deactivateUser(id);
   }
 
   onSetToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+   this.userService.activateUser(id);
   }
+
+  /**
+Dodać dwa serwisy:
+  - jeden do obsługi listy (dodawanie-usuwanie userow z active i inactive list
+  - zliczanie zmian na listach. ile ich zostało zrobionych)
+  **/
 }
